@@ -1,0 +1,6 @@
+# Serve .well-known statically from Netlify (no proxy)
+/.well-known/*  /.well-known/:splat  200!
+
+# Proxy root and all other paths to your server's Element UI (transparent)
+/                 https://hs-atfmatrix.duckdns.org:55439/element/  200!
+/*                https://hs-atfmatrix.duckdns.org:55439/element/:splat  200!

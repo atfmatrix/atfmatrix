@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
+    />
+    <title>Sable Client</title>
+    <meta name="name" content="Sable" />
+    <meta name="author" content="7w1" />
+    <meta
+      name="description"
+      content="A Matrix client where you can enjoy the conversation using (not) simple, elegant and secure interface protected by e2ee with the power of open source. And colorful cosmetics. Because yes."
+    />
+    <meta
+      name="keywords"
+      content="sable client, sable, sableapp, cinnyapp, cinny, cinny client, matrix, matrix client, matrix.org, element"
+    />
+
+    <meta property="og:title" content="Sable" />
+    <meta property="og:url" content="https://app.sable.moe" />
+    <meta property="og:image" content="/assets/favicon-DWPeA7ev.png" />
+    <meta
+      property="og:description"
+      content="A Matrix client where you can enjoy the conversation using (not) simple, elegant and secure interface protected by e2ee with the power of open source. And colorful cosmetics. Because yes."
+    />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1a21" />
+
+    <link id="favicon" rel="shortcut icon" href="/assets/favicon-DWPeA7ev.png" />
+
+    <style>
+      html,
+      body {
+        background-color: #1b1a21;
+        background-image: radial-gradient(#2d2c36 2px, #1b1a21 2px);
+        background-size: 40px 40px;
+        color: #eae8f0;
+      }
+      @media (prefers-color-scheme: light) {
+        html,
+        body {
+          background-color: #ffffff;
+          background-image: radial-gradient(#e4e4e7 2px, #ffffff 2px);
+          color: #18181b;
+        }
+      }
+    </style>
+
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Sable" />
+    <meta name="apple-mobile-web-app-title" content="Sable" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="apple-touch-icon" href="/assets/logo-maskable-BN3ALm7n.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="36x36"
+      href="/assets/logo-maskable-36x36-BYVrTZmo.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="48x48"
+      href="/assets/logo-maskable-48x48-C99KsjLa.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/assets/logo-maskable-57x57-yNHghumk.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/assets/logo-maskable-60x60-CUH3V82k.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/assets/logo-maskable-72x72-CMYgSAkn.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="96x96"
+      href="/assets/logo-maskable-96x96-K9HrIP6s.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/assets/logo-maskable-114x114-CfYR65Dr.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/assets/logo-maskable-120x120-WEmA7tuH.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/assets/logo-maskable-144x144-DWHunyun.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/assets/logo-maskable-152x152-CGeC_MK6.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="167x167"
+      href="/assets/logo-maskable-167x167-CyZhKreB.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/logo-maskable-180x180-Dkvc03p3.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="192x192"
+      href="/assets/logo-maskable-192x192-C3SwBbDL.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="256x256"
+      href="/assets/logo-maskable-256x256-Dg02eLWL.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="384x384"
+      href="/assets/logo-maskable-384x384-mCRoNp1F.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="512x512"
+      href="/assets/logo-maskable-512x512-Brr_h_lu.png"
+    />
+    <script type="module" crossorigin src="/assets/index-BkkCC0vW.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/matrix-05hIIFCf.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-Bmpu6nFj.css">
+  </head>
+
+  <body id="appBody">
+    <script>
+      window.global ||= window;
+    </script>
+    <script>
+      (function () {
+        var base = '/';
+        var lng = (localStorage.getItem('i18nextLng') || navigator.language || 'en').split('-')[0];
+        var configPromise = fetch(base + 'config.json').then(function (r) {
+          if (!r.ok) return undefined;
+          return r.json();
+        });
+        var localePromise = fetch(base + 'public/locales/' + lng + '.json');
+        window.__SABLE_PRELOAD = {
+          config: configPromise,
+          locale: { lng: lng, promise: localePromise },
+        };
+        configPromise.catch(function () {});
+        localePromise.catch(function () {});
+      })();
+    </script>
+    <div id="root"></div>
+  </body>
+</html>

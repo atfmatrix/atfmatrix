@@ -1,0 +1,14 @@
+{
+  "defaultHomeserver": 0,
+  "homeserverList": [
+    "atfmatrix.pages.dev"
+  ],
+  "allowCustomHomeservers": false,
+  "slidingSync": {
+    "enabled": false
+  },
+  "hashRouter": {
+    "enabled": true,
+    "basename": "/"
+  }
+}

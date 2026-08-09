@@ -1,0 +1,39 @@
+import { j as e, f as t, y as j, z as g, A as v, d as n, D as o, E as f, F as $, G as pe, H as xe, J as fe, r as m, K as r, L as he, N as Re, O as je, P as ge, Q as Ce, U as ve, V as E, W as ye, X as Se, Y as be, Z as Te, _ as ke, $ as Pe, a0 as Ve, a1 as Ae, a2 as L, a3 as Ie, a4 as H, a5 as ze, a6 as Ee, a7 as Le, a8 as Ne, a9 as Y, aa as we, ab as Be, ac as Me, ad as Ke, ae as De, af as Fe, ag as Je, ah as Oe, ai as _e, R as qe, aj as Ue } from "./index-BkkCC0vW.js";
+import { M as $e, R as X, J as N } from "./matrix-05hIIFCf.js";
+import { B as He } from "./BetaNoticeBadge-D8TrjLRy.js";
+function Ye({ value: a, onSelect: d, disabled: s, getIcon: l }) {
+  return e.jsxs(t, { shrink: "No", direction: "Column", gap: "100", children: [e.jsx(j, { style: { padding: g.space.S300 }, variant: a === o.TextRoom ? "Primary" : "SurfaceVariant", direction: "Column", gap: "100", as: "button", type: "button", "aria-pressed": a === o.TextRoom, onClick: () => d(o.TextRoom), disabled: s, children: e.jsx(v, { before: l(o.TextRoom), after: a === o.TextRoom && f($), children: e.jsxs(t, { gap: "200", alignItems: "Baseline", children: [e.jsx(n, { size: "H6", style: { flexShrink: 0 }, children: "Chat Room" }), e.jsx(n, { size: "T300", priority: "300", truncate: true, children: "- Messages, photos, and videos." })] }) }) }), e.jsx(j, { style: { padding: g.space.S300 }, variant: a === o.VoiceRoom ? "Primary" : "SurfaceVariant", direction: "Column", gap: "100", as: "button", type: "button", "aria-pressed": a === o.VoiceRoom, onClick: () => d(o.VoiceRoom), disabled: s, children: e.jsx(v, { before: l(o.VoiceRoom), after: a === o.VoiceRoom && f($), children: e.jsxs(t, { gap: "200", alignItems: "Baseline", children: [e.jsx(n, { size: "H6", style: { flexShrink: 0 }, children: "Voice Room" }), e.jsx(n, { size: "T300", priority: "300", truncate: true, children: "- Live audio and video conversations." }), e.jsx(He, {})] }) }) })] });
+}
+const G = De("CreateRoom"), W = (a, d, s = "400") => {
+  const l = d === o.VoiceRoom;
+  let p = N.Public;
+  return a === r.Restricted && (p = N.Restricted), a === r.Private && (p = N.Knock), f(Ke(l ? X.UnstableCall : void 0, p), s);
+}, Ge = (a) => a === o.VoiceRoom ? f(Be, "400") : f(Me, "400");
+function We({ defaultAccess: a, defaultType: d, space: s, onCreate: l }) {
+  const p = pe(), T = xe(), x = fe()["m.room_versions"], [h, B] = m.useState(x?.default ?? "1");
+  m.useEffect(() => {
+    B(x?.default ?? "1");
+  }, [x?.default]);
+  const M = s && Y(h), [R, Q] = m.useState(d ?? o.TextRoom), [i, K] = m.useState(a ?? (M ? r.Restricted : r.Private)), D = he(h), { additionalCreators: F, addAdditionalCreator: Z, removeAdditionalCreator: ee } = Re(), [J, oe] = m.useState(true), [k, ae] = m.useState(false), [P, te] = m.useState(false), [y, se] = m.useState(false), O = i === r.Private && je(h), _ = i === r.Restricted && ge(h), ie = (u) => {
+    Y(u) || K(r.Private), B(u);
+  }, [S, re] = Ce(m.useCallback((u) => ve(p, u), [p])), ne = S.status === E.Loading, C = S.status === E.Error ? S.error : void 0, c = S.status === E.Loading, ce = (u) => {
+    if (u.preventDefault(), c) return;
+    const V = u.currentTarget, le = V.nameInput, de = V.topicTextAria, A = V.aliasInput, b = le?.value.trim(), ue = de?.value.trim(), me = A && A.value ? we(A.value) : void 0;
+    if (!b) return;
+    const I = i === r.Public;
+    let z = false;
+    O && i === r.Private && (z = P), _ && i === r.Restricted && (z = P);
+    let q;
+    R === o.VoiceRoom && (q = X.UnstableCall), G.info("ui", "Create room button clicked", { roomName: b, access: i, type: R, publicRoom: I, encryption: k, hasParent: !!s, parentRoomId: s?.roomId }), re({ version: h, type: q, parent: s, access: i, name: b, topic: ue || void 0, aliasLocalPart: I ? me : void 0, encryption: I ? false : k, knock: z, allowFederation: J, additionalCreators: D ? F : void 0 }).then((U) => {
+      G.info("ui", "Room created successfully", { roomId: U, roomName: b, access: i, type: R }), T() && l?.(U);
+    });
+  };
+  return e.jsxs(t, { as: "form", onSubmit: ce, grow: "Yes", direction: "Column", gap: "500", children: [e.jsxs(t, { direction: "Column", gap: "100", children: [e.jsx(n, { size: "L400", children: "Type" }), e.jsx(Ye, { value: R, onSelect: Q, disabled: c, getIcon: Ge })] }), e.jsxs(t, { direction: "Column", gap: "100", children: [e.jsx(n, { size: "L400", children: "Access" }), e.jsx(ye, { value: i, onSelect: K, canRestrict: M, disabled: c, getIcon: (u) => W(u, R) })] }), e.jsxs(t, { shrink: "No", direction: "Column", gap: "100", children: [e.jsx(n, { size: "L400", children: "Name" }), e.jsx(Se, { required: true, before: W(i, R, "100"), name: "nameInput", size: "500", variant: "SurfaceVariant", radii: "400", autoComplete: "off", disabled: c })] }), e.jsxs(t, { shrink: "No", direction: "Column", gap: "100", children: [e.jsx(n, { size: "L400", children: "Topic (Optional)" }), e.jsx(be, { name: "topicTextAria", size: "500", variant: "SurfaceVariant", radii: "400", disabled: c })] }), i === r.Public && e.jsx(Te, { disabled: c }), e.jsxs(t, { shrink: "No", direction: "Column", gap: "100", children: [e.jsxs(t, { gap: "200", alignItems: "End", children: [e.jsx(n, { size: "L400", children: "Options" }), e.jsx(t, { grow: "Yes", justifyContent: "End", children: e.jsx(ke, { radii: "Pill", before: f(y ? Pe : Ve, "50"), onClick: () => se(!y), type: "button", children: e.jsx(n, { size: "T200", children: "Advanced Options" }) }) })] }), D && e.jsx(j, { style: { padding: g.space.S300 }, variant: "SurfaceVariant", direction: "Column", gap: "500", children: e.jsx(Ae, { additionalCreators: F, onSelect: Z, onRemove: ee }) }), i !== r.Public && e.jsxs(e.Fragment, { children: [e.jsx(j, { style: { padding: g.space.S300 }, variant: "SurfaceVariant", direction: "Column", gap: "500", children: e.jsx(v, { title: "End-to-End Encryption", description: "Once this feature is enabled, it can't be disabled after the room is created.", after: e.jsx(L, { variant: "Primary", value: k, onChange: ae, disabled: c }) }) }), y && (O || _) && e.jsx(j, { style: { padding: g.space.S300 }, variant: "SurfaceVariant", direction: "Column", gap: "500", children: e.jsx(v, { title: "Knock to Join", description: "Anyone can send request to join this room.", after: e.jsx(L, { variant: "Primary", value: P, onChange: te, disabled: c }) }) })] }), e.jsx(j, { style: { padding: g.space.S300 }, variant: "SurfaceVariant", direction: "Column", gap: "500", children: e.jsx(v, { title: "Allow Federation", description: "Users from other servers can join.", after: e.jsx(L, { variant: "Primary", value: J, onChange: oe, disabled: c }) }) }), y && e.jsx(Ie, { versions: x?.available ? Object.keys(x.available) : ["1"], value: h, onChange: ie, disabled: c })] }), C && e.jsxs(t, { style: { color: H.Critical.Main }, alignItems: "Center", gap: "200", children: [f(ze, "100", { filled: true }), e.jsx(n, { size: "T300", style: { color: H.Critical.Main }, children: e.jsx("b", { children: C instanceof $e && C.name === Ee.M_LIMIT_EXCEEDED ? `Server rate-limited your request for ${Le(C.data.retry_after_ms ?? 0)} minutes!` : C.message }) })] }), e.jsx(t, { shrink: "No", direction: "Column", gap: "200", children: e.jsx(Ne, { type: "submit", size: "500", variant: "Primary", radii: "400", disabled: c, loading: ne, spinnerVariant: "Primary", spinnerSize: "200", children: e.jsx(n, { size: "B400", children: "Create Room" }) }) })] });
+}
+function eo() {
+  const { navigateRoom: a } = Fe(), [d] = Je(), s = d.get("spaceId") ?? void 0, l = d.get("type"), p = l === o.TextRoom || l === o.VoiceRoom ? l : void 0, T = Oe(), w = _e(T), x = s ? w(s) : void 0;
+  return e.jsx(qe, { title: "New Room", subTitle: "Build a room for real-time conversations.", closeLabel: "Close create room", children: e.jsx(Ue, { value: x ?? null, children: e.jsx(We, { space: x, onCreate: a, defaultType: p }) }) });
+}
+export {
+  eo as CreateRoomPage
+};

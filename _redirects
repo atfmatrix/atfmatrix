@@ -1,10 +1,6 @@
-# Static .well-known (local to Netlify)
-/.well-known/*  /.well-known/:splat  200!
-
-# Proxy all Matrix APIs to hs- (bypasses Element NGINX)
-/_matrix/*      https://hs-atfmatrix.duckdns.org:55439/_matrix/:splat  200!
-/_synapse/*     https://hs-atfmatrix.duckdns.org:55439/_synapse/:splat  200!
-
-# Proxy UI (as before; non-API paths)
-/                 https://hs-atfmatrix.duckdns.org:55439/element/  200!
-/*                https://hs-atfmatrix.duckdns.org:55439/element/:splat  200!
+# Sable is served as static files from this repo.
+# hashRouter is on in config.json, so deep links use /#/... and need no SPA rewrite.
+# Do not add /* rules here — they override static assets (including index.html).
+#
+# Optional identity rules are unnecessary for normal static hosting.
+# Matrix discovery lives at .well-known/matrix/client (static file).
